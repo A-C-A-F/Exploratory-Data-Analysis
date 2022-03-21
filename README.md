@@ -23,3 +23,34 @@
 ### Upload the PNG file on the Assignment submission page
 
 ### Copy and paste the R code from the corresponding R file into the text box at the appropriate point in the peer assessment.
+
+
+## Install (if not yet) and load packages necessary for the analysis.
+```{r}
+install.packages("dplyr")
+library(dplyr)
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+
+## Downloading the data and saving it in the working directory
+```{r}
+filename <- "Data_for_Peer_Assessment.zip"
+
+if (!file.exists(filename)) {
+  download_url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip"
+  download.file(download_url, destfile = filename)
+  unzip (zipfile = filename)
+}
+
+if (!exists("NEI")) {
+  # print("Loading NEI Data, please wait.")
+  NEI <- readRDS("summarySCC_PM25.rds") 
+}
+
+if (!exists("SCC")) {
+  # print("Loading SCC Data.")
+  SCC <- readRDS("Source_Classification_Code.rds")
+}
+```
